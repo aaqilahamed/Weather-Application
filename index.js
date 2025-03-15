@@ -93,6 +93,7 @@ function fetchWeatherData() {
                 mist: "./icons/mist.png",
                 Lightsnow: "./icons/Lightsnow.png",
                 snow: "./icons/snow.png",
+                snowthunder:"./icons/snowthunder.png",
                 clear:"./icons/clear.png",
                 placeholder:"./icons/placeholder.png"
             };
@@ -109,7 +110,7 @@ function fetchWeatherData() {
                 // Combined moderate rain with other rainy conditions
                 icon.src = weatherIcons.rainy;
 
-            } else if ([1273, 1276, 1279, 1282].includes(code)) { 
+            } else if ([1273, 1276].includes(code)) { 
                 // Stormy weather (thunderstorms)
                 icon.src = weatherIcons.stormy;
 
@@ -124,7 +125,9 @@ function fetchWeatherData() {
 
             } else if ([1219, 1258].includes(code)) { // Moderate and heavy snow combined
                 icon.src = weatherIcons.snow;
-            } else {
+            } else if ([1279, 1282].includes(code)) { 
+                icon.src = weatherIcons.snowthunder;
+            }else {
                 icon.src = weatherIcons.placeholder; // Fallback for unknown weather
             }
         
@@ -149,7 +152,7 @@ function fetchWeatherData() {
                 app.style.backgroundImage = `url(./${timeOfDay}/rainys.jpg)`;
                 btn.style.background = timeOfDay === "day" ? "#647d75" : "#325c80";
 
-            } else if ([1273, 1276, 1279, 1282].includes(code)) {
+            } else if ([1273, 1276].includes(code)) {
                 // Stormy background
                 app.style.backgroundImage = `url(./${timeOfDay}/stormy.jpg)`;
                 btn.style.background = timeOfDay === "day" ? "#5c5c5c" : "#2b2b2b";
@@ -160,7 +163,11 @@ function fetchWeatherData() {
                     btn.style.background = timeOfDay === "day" ? "#a1a1a1" : "#5e5e5e";
             } else if ([700, 711, 721, 731, 741, 751, 761, 771, 781].includes(code)) {
                     // Misty weather  
-                        
+                
+            }else if ([1279, 1282].includes(code)) {
+   
+             app.style.backgroundImage = `url(./${timeOfDay}/snowthunder.jpg)`;
+             btn.style.background = timeOfDay === "day" ? "#5c5c5c" : "#2b2b2b";          
             } else {
                 app.style.backgroundImage = `url(./${timeOfDay}/snowy.jpg)`;
                 btn.style.background = timeOfDay === "day" ? "#4d72aa" : "#1b1b1b";
