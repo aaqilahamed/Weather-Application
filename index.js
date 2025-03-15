@@ -144,7 +144,7 @@ function fetchWeatherData() {
                     btn.style.background = "#181e27";
                 }
                 
-            } else if ([1003, 1006, 1009, 1030, 1069, 1087, 1135, 1273, 1276, 1279, 1282].includes(code)) {
+            } else if ([1003, 1006, 1009, 1030, 1069, 1087, 1135, 1273, 1276].includes(code)) {
                 app.style.backgroundImage = `url(./${timeOfDay}/weather.avif)`;
                 btn.style.background = timeOfDay === "day" ? "#fa6d1b" : "#181e27";
 
